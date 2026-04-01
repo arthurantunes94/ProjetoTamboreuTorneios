@@ -1,0 +1,78 @@
+/* Estilos para a página de login */
+
+/* O layout é centrado com um fundo em gradiente, e o formulário de login tem um design limpo e moderno */
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  font-family: Arial, sans-serif;
+}
+
+/* O cartão de login tem um fundo branco, bordas arredondadas e uma sombra para destacá-lo do fundo */
+.login-card {
+  background: #ffffff;
+  padding: 40px;
+  width: 350px;
+  border-radius: 12px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* Estilos para os títulos, parágrafos, campos de entrada e botões dentro do cartão de login */
+.login-card h2 {
+  margin-bottom: 10px;
+}
+
+/* O parágrafo abaixo do título tem uma cor mais suave para complementar o design */
+.login-card p {
+  margin-bottom: 20px;
+  color: #666;
+}
+
+/* O formulário é organizado em uma coluna, com espaçamento entre os campos de entrada e o botão de login */
+.login-card form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Os campos de entrada têm um design simples, com bordas */
+.login-card input {
+  margin-bottom: 15px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  outline: none;
+}
+
+/* Quando o campo de entrada está em foco, a borda muda para uma cor mais vibrante para indicar que o usuário está interagindo com ele */
+.login-card input:focus {
+  border-color: #2563eb;
+}
+
+/* O botão de login tem um fundo azul vibrante, texto branco e uma transição suave para o efeito hover */
+.login-card button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+/* Quando o usuário passa o mouse sobre o botão de login, o fundo muda para um tom mais escuro de azul para indicar que é interativo */
+.login-card button:hover {
+  background: #1e40af;
+}
+
+/* As mensagens de erro são exibidas em vermelho para chamar a atenção do usuário, e têm um tamanho de fonte menor para não dominar o layout */
+.error {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
