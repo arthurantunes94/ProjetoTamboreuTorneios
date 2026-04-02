@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import TorneioForm from "../components/torneios/TorneioForm";
 import TorneioList from "../components/torneios/TorneioList";
+import "../css/Torneios.css";
 
 export default function Torneios() {
   const [torneios, setTorneios] = useState(() => {
@@ -35,21 +36,27 @@ export default function Torneios() {
   }
 
   return (
-    <div>
-      <h1>Torneios</h1>
+    <div className="torneios-container">
+      <h1 className="title">Torneios</h1>
 
-      <TorneioForm
-        key={editing ? editing.id : "new"}
-        addTorneio={addTorneio}
-        editing={editing}
-        updateTorneio={updateTorneio}
-      />
+      <div className="torneios-content">
+        <div className="form-area">
+          <TorneioForm
+            key={editing ? editing.id : "new"}
+            addTorneio={addTorneio}
+            editing={editing}
+            updateTorneio={updateTorneio}
+          />
+        </div>
 
-      <TorneioList
-        torneios={torneios}
-        deleteTorneio={deleteTorneio}
-        startEdit={startEdit}
-      />
+        <div className="list-area">
+          <TorneioList
+            torneios={torneios}
+            deleteTorneio={deleteTorneio}
+            startEdit={startEdit}
+          />
+        </div>
+      </div>
     </div>
   );
 }

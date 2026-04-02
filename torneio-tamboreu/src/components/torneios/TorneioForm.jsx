@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../../css/Torneios.css";
 
 export default function TorneioForm({ addTorneio, editing, updateTorneio }) {
   const [nome, setNome] = useState(editing ? editing.nome : "");
@@ -20,20 +21,24 @@ export default function TorneioForm({ addTorneio, editing, updateTorneio }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        placeholder="Nome do torneio"
-        value={nome}
-        onChange={(e) => setNome(e.target.value)}
-      />
+    <div className="form-card">
+      <form onSubmit={handleSubmit}>
+        <input
+          placeholder="Nome do torneio"
+          value={nome}
+          onChange={(e) => setNome(e.target.value)}
+        />
 
-      <input
-        type="date"
-        value={data}
-        onChange={(e) => setData(e.target.value)}
-      />
+        <input
+          type="date"
+          value={data}
+          onChange={(e) => setData(e.target.value)}
+        />
 
-      <button type="submit">{editing ? "Atualizar" : "Criar"}</button>
-    </form>
+        <button className="btn-primary" type="submit">
+          {editing ? "Atualizar" : "Criar"}
+        </button>
+      </form>
+    </div>
   );
 }

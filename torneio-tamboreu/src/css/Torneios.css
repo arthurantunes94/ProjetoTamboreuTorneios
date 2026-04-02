@@ -1,0 +1,87 @@
+.torneios-container {
+  padding: 10px;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.torneios-content {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 20px;
+}
+
+.form-area {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.list-area {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-card {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-card input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.btn-primary {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-primary:hover {
+  background: #1e40af;
+}
+
+.torneio-card {
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.torneio-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.torneio-actions button {
+  margin-left: 10px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.torneio-actions button:first-child {
+  background: #facc15;
+}
+
+.torneio-actions button:last-child {
+  background: #ef4444;
+  color: white;
+}
