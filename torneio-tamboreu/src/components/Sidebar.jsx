@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import "../css/Sidebar.css";
+import { Home, Trophy, BarChart3, Building2, Image } from "lucide-react";
 
 export default function Sidebar() {
   return (
@@ -8,23 +9,28 @@ export default function Sidebar() {
 
       <nav>
         <NavLink to="/home" className="menu-item">
-          🏠 <span>Home</span>
+          <Home size={18} />
+          <span>Home</span>
         </NavLink>
 
         <NavLink to="/torneios" className="menu-item">
-          🏆 <span>Torneios</span>
+          <Trophy size={18} />
+          <span>Torneios</span>
         </NavLink>
 
         <NavLink to="/ranking" className="menu-item">
-          📊 <span>Ranking</span>
+          <BarChart3 size={18} />
+          <span>Ranking</span>
         </NavLink>
 
         <NavLink to="/clubes" className="menu-item">
-          🏢 <span>Clubes</span>
+          <Building2 size={18} />
+          <span>Clubes</span>
         </NavLink>
 
         <NavLink to="/fotos" className="menu-item">
-          📸 <span>Fotos</span>
+          <Image size={18} />
+          <span>Fotos</span>
         </NavLink>
       </nav>
     </div>

@@ -1,5 +1,13 @@
 /* Estilos para a barra lateral (sidebar) da aplicação, que é fixa à esquerda e contém o menu de navegação */
 
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 40px;
+
+  letter-spacing: 1px;
+}
+
 /* A barra lateral tem uma largura fixa, ocupa toda a altura da tela, tem um fundo escuro e texto branco para contraste, além de um preenchimento interno para espaçamento */
 .sidebar {
   width: 240px;
@@ -30,30 +38,44 @@
   gap: 10px;
 }
 
-/* Cada item do menu é um link que tem um layout flexível para alinhar o ícone e o texto, um preenchimento para tornar a área clicável, bordas arredondadas e uma transição suave para o efeito hover */
+/* Cada item do menu é um link que tem um layout flexível para alinhar o ícone e o texto, um preenchimento para aumentar a área clicável, bordas arredondadas para um visual mais suave, e uma transição para um efeito hover suave */
 .menu-item {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 
   padding: 12px 14px;
-  border-radius: 8px;
+  border-radius: 10px;
 
   text-decoration: none;
   color: #94a3b8;
 
-  transition: 0.2s;
+  transition: all 0.25s ease;
 }
 
-/* Quando o usuário passa o mouse sobre um item do menu, o fundo muda para um tom mais escuro e o texto fica branco para indicar que é interativo */
+/* Quando o usuário passa o mouse sobre um item do menu, ele muda para um fundo mais escuro, o texto fica branco para melhor contraste, e o item se move ligeiramente para a direita para indicar que é interativo */
 .menu-item:hover {
   background: #1e293b;
   color: white;
+
+  transform: translateX(4px);
 }
 
-/* O item do menu ativo tem um fundo azul vibrante, texto branco e uma fonte mais pesada para destacar a página atual */
+/* O item do menu que corresponde à rota atual (ativo) tem um fundo em gradiente azul, texto branco, peso de fonte maior para destaque, e uma sombra para dar profundidade */
 .menu-item.active {
-  background: #2563eb;
+  background: linear-gradient(90deg, #2563eb, #3b82f6);
   color: white;
   font-weight: 500;
+
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+}
+
+/* Os ícones dentro dos itens do menu têm uma transição suave para o efeito hover, e quando o item está ativo, o ícone aumenta ligeiramente de tamanho para dar um feedback visual adicional */
+.menu-item svg {
+  transition: 0.2s;
+}
+
+/* Quando o item do menu está ativo, o ícone aumenta de tamanho para indicar que é a rota atual */
+.menu-item.active svg {
+  transform: scale(1.1);
 }
