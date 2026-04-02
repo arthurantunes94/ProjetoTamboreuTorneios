@@ -1,0 +1,59 @@
+/* Estilos para a barra lateral (sidebar) da aplicação, que é fixa à esquerda e contém o menu de navegação */
+
+/* A barra lateral tem uma largura fixa, ocupa toda a altura da tela, tem um fundo escuro e texto branco para contraste, além de um preenchimento interno para espaçamento */
+.sidebar {
+  width: 240px;
+  height: 100vh;
+  background: #0f172a;
+  color: white;
+  padding: 25px 20px;
+
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* O logo ou título da barra lateral tem um tamanho de fonte maior, é negrito e tem uma margem inferior para separá-lo do menu */
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+/* O menu de navegação é organizado em uma coluna, com espaçamento entre os itens */
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Cada item do menu é um link que tem um layout flexível para alinhar o ícone e o texto, um preenchimento para tornar a área clicável, bordas arredondadas e uma transição suave para o efeito hover */
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 12px 14px;
+  border-radius: 8px;
+
+  text-decoration: none;
+  color: #94a3b8;
+
+  transition: 0.2s;
+}
+
+/* Quando o usuário passa o mouse sobre um item do menu, o fundo muda para um tom mais escuro e o texto fica branco para indicar que é interativo */
+.menu-item:hover {
+  background: #1e293b;
+  color: white;
+}
+
+/* O item do menu ativo tem um fundo azul vibrante, texto branco e uma fonte mais pesada para destacar a página atual */
+.menu-item.active {
+  background: #2563eb;
+  color: white;
+  font-weight: 500;
+}

@@ -1,0 +1,15 @@
+/* Estilos para o layout geral da aplicação, que inclui a barra lateral e a área de conteúdo principal */
+
+/* O layout é organizado em um contêiner flexível, onde a barra lateral fica fixa à esquerda e o conteúdo principal ocupa o restante do espaço */
+.layout {
+  display: flex;
+}
+
+/* A área de conteúdo principal tem uma margem à esquerda para acomodar a barra lateral, um preenchimento para espaçamento interno, um fundo claro e uma altura mínima para preencher a tela */
+.content {
+  margin-left: 240px;
+  padding: 30px;
+  width: 100%;
+  background: #f1f5f9;
+  min-height: 100vh;
+}
