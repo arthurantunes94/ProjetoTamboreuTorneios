@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/useAuth";
 import "../css/login.css";
 
 export default function Login() {
   // Acessa a função de login do contexto de autenticação
   const { login } = useAuth();
+  const navigate = useNavigate();
 
   // Estados locais para armazenar o email, senha e mensagens de erro
   const [email, setEmail] = useState("");
@@ -17,8 +19,10 @@ export default function Login() {
 
     const success = login(email, password);
 
-    // Se o login falhar, exibe uma mensagem de erro
-    if (!success) {
+    // Se o login for bem-sucedido, redireciona para a página inicial; caso contrário, exibe uma mensagem de erro
+    if (success) {
+      navigate("/home");
+    } else {
       setError("Email ou senha inválidos");
     }
   }
