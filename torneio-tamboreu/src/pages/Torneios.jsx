@@ -1,10 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TorneioForm from "../components/torneios/TorneioForm";
 import TorneioList from "../components/torneios/TorneioList";
 
 export default function Torneios() {
-  const [torneios, setTorneios] = useState([]);
+  const [torneios, setTorneios] = useState(() => {
+    try {
+      const stored = localStorage.getItem("torneios");
+      return stored ? JSON.parse(stored) : [];
+    } catch {
+      return [];
+    }
+  });
   const [editing, setEditing] = useState(null);
+
+  useEffect(() => {
+    localStorage.setItem("torneios", JSON.stringify(torneios));
+  }, [torneios]);
 
   function addTorneio(torneio) {
     setTorneios([...torneios, { ...torneio, id: Date.now() }]);
