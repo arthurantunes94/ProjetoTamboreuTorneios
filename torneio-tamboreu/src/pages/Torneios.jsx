@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import TorneioForm from "../components/torneios/TorneioForm";
 import TorneioList from "../components/torneios/TorneioList";
 import "../css/Torneios.css";
+import toast from "react-hot-toast";
 
 export default function Torneios() {
   const [torneios, setTorneios] = useState(() => {
@@ -20,10 +21,13 @@ export default function Torneios() {
 
   function addTorneio(torneio) {
     setTorneios([...torneios, { ...torneio, id: Date.now() }]);
+    toast.success("Torneio criado com sucesso!");
   }
 
   function deleteTorneio(id) {
     setTorneios(torneios.filter((t) => t.id !== id));
+
+    toast.error("Torneio removido!");
   }
 
   function startEdit(torneio) {
@@ -33,6 +37,8 @@ export default function Torneios() {
   function updateTorneio(updated) {
     setTorneios(torneios.map((t) => (t.id === updated.id ? updated : t)));
     setEditing(null);
+
+    toast.success("Torneio atualizado!");
   }
 
   return (

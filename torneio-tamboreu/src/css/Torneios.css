@@ -24,6 +24,8 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
+
+  animation: fadeIn 0.4s ease;
 }
 
 .form-card {
@@ -36,6 +38,14 @@
   padding: 10px;
   border-radius: 8px;
   border: 1px solid #ddd;
+
+  transition: 0.2s;
+}
+
+.form-card input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  outline: none;
 }
 
 .btn-primary {
@@ -45,11 +55,17 @@
   padding: 10px;
   border-radius: 8px;
   cursor: pointer;
-  transition: 0.2s;
+
+  transition: all 0.2s ease;
 }
 
 .btn-primary:hover {
   background: #1e40af;
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
 }
 
 .torneio-card {
@@ -62,6 +78,17 @@
   align-items: center;
 
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+
+  transition: all 0.25s ease;
+  opacity: 0;
+  transform: translateY(10px);
+
+  animation: fadeInUp 0.3s ease forwards;
+}
+
+.torneio-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
 }
 
 .torneio-info {
@@ -71,10 +98,16 @@
 
 .torneio-actions button {
   margin-left: 10px;
-  padding: 6px 10px;
+  padding: 6px 12px;
   border-radius: 6px;
   border: none;
   cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.torneio-actions button:active {
+  transform: scale(0.95);
 }
 
 .torneio-actions button:first-child {
@@ -84,4 +117,20 @@
 .torneio-actions button:last-child {
   background: #ef4444;
   color: white;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
