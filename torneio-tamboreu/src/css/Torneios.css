@@ -154,6 +154,29 @@
   color: white;
 }
 
+.confirm-modal {
+  text-align: center;
+}
+
+.confirm-modal p {
+  margin: 15px 0;
+}
+
+.confirm-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-danger {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
 @keyframes fadeInUp {
   to {
     opacity: 1;

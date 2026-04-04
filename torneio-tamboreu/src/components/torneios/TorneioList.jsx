@@ -1,6 +1,6 @@
 import "../../css/Torneios.css";
 
-export default function TorneioList({ torneios, deleteTorneio, startEdit }) {
+export default function TorneioList({ torneios, startDelete, startEdit }) {
   return (
     <>
       {torneios.map((t) => (
@@ -12,7 +12,7 @@ export default function TorneioList({ torneios, deleteTorneio, startEdit }) {
 
           <div className="torneio-actions">
             <button onClick={() => startEdit(t)}>Editar</button>
-            <button onClick={() => deleteTorneio(t.id)}>Excluir</button>
+            <button onClick={() => startDelete(t)}>Excluir</button>
           </div>
         </div>
       ))}

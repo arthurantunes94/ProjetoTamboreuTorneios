@@ -16,6 +16,7 @@ export default function Torneios() {
   });
   const [editing, setEditing] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [torneioToDelete, setTorneioToDelete] = useState(null);
 
   useEffect(() => {
     localStorage.setItem("torneios", JSON.stringify(torneios));
@@ -27,10 +28,16 @@ export default function Torneios() {
     toast.success("Torneio criado com sucesso!");
   }
 
-  function deleteTorneio(id) {
-    setTorneios(torneios.filter((t) => t.id !== id));
+  function confirmDelete(torneio) {
+    setTorneioToDelete(torneio);
+  }
+
+  function handleDelete() {
+    setTorneios(torneios.filter((t) => t.id !== torneioToDelete.id));
 
     toast.error("Torneio removido!");
+
+    setTorneioToDelete(null);
   }
 
   function startEdit(torneio) {
@@ -84,10 +91,36 @@ export default function Torneios() {
       <div className="list-area">
         <TorneioList
           torneios={torneios}
-          deleteTorneio={deleteTorneio}
+          startDelete={confirmDelete}
           startEdit={startEdit}
         />
       </div>
+      <Modal
+        isOpen={!!torneioToDelete}
+        onClose={() => setTorneioToDelete(null)}
+      >
+        <div className="confirm-modal">
+          <h2>Confirmar exclusão</h2>
+
+          <p>
+            Tem certeza que deseja excluir o torneio{" "}
+            <strong>{torneioToDelete?.nome}</strong>?
+          </p>
+
+          <div className="confirm-actions">
+            <button className="btn-danger" onClick={handleDelete}>
+              Excluir
+            </button>
+
+            <button
+              className="btn-secondary"
+              onClick={() => setTorneioToDelete(null)}
+            >
+              Cancelar
+            </button>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 }
