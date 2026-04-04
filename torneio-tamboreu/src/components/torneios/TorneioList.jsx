@@ -1,6 +1,9 @@
 import "../../css/Torneios.css";
 
 export default function TorneioList({ torneios, startDelete, startEdit }) {
+  if (torneios.length === 0) {
+    return <p>Nenhum torneio encontrado.</p>;
+  }
   return (
     <>
       {torneios.map((t) => (

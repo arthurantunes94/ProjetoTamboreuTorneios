@@ -4,6 +4,7 @@ import TorneioList from "../components/torneios/TorneioList";
 import "../css/Torneios.css";
 import toast from "react-hot-toast";
 import Modal from "../components/Modal";
+import { Search } from "lucide-react";
 
 export default function Torneios() {
   const [torneios, setTorneios] = useState(() => {
@@ -17,6 +18,11 @@ export default function Torneios() {
   const [editing, setEditing] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [torneioToDelete, setTorneioToDelete] = useState(null);
+  const [search, setSearch] = useState("");
+
+  const torneiosFiltrados = torneios.filter((t) =>
+    t.nome.toLowerCase().includes(search.toLowerCase()),
+  );
 
   useEffect(() => {
     localStorage.setItem("torneios", JSON.stringify(torneios));
@@ -57,18 +63,32 @@ export default function Torneios() {
     <div className="torneios-container">
       <div className="header">
         <h1 className="title">Torneios</h1>
+        <div className="header-actions">
+          <div className="search-wrapper">
+            <input
+              type="text"
+              placeholder="Buscar torneio..."
+              className="search-input"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
 
-        <button
-          className="btn-primary"
-          onClick={() => {
-            setEditing(null);
-            setIsModalOpen(true);
-          }}
-        >
-          + Novo Torneio
-        </button>
+            <button className="search-icon">
+              <Search size={18} />
+            </button>
+          </div>
+
+          <button
+            className="btn-primary"
+            onClick={() => {
+              setEditing(null);
+              setIsModalOpen(true);
+            }}
+          >
+            + Novo Torneio
+          </button>
+        </div>
       </div>
-
       <Modal
         isOpen={isModalOpen}
         onClose={() => {
@@ -90,7 +110,7 @@ export default function Torneios() {
 
       <div className="list-area">
         <TorneioList
-          torneios={torneios}
+          torneios={torneiosFiltrados}
           startDelete={confirmDelete}
           startEdit={startEdit}
         />
