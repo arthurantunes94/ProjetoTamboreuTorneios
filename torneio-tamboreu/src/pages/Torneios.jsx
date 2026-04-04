@@ -19,10 +19,25 @@ export default function Torneios() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [torneioToDelete, setTorneioToDelete] = useState(null);
   const [search, setSearch] = useState("");
+  const currentYear = new Date().getFullYear().toString();
+  const [year, setYear] = useState(currentYear);
 
-  const torneiosFiltrados = torneios.filter((t) =>
-    t.nome.toLowerCase().includes(search.toLowerCase()),
+  const torneiosOrdenados = [...torneios].sort(
+    (a, b) => new Date(b.data) - new Date(a.data),
   );
+
+  const torneiosFiltrados = torneiosOrdenados.filter((t) => {
+    const matchName = t.nome.toLowerCase().includes(search.toLowerCase());
+
+    const matchYear =
+      year === "all" || new Date(t.data).getFullYear().toString() === year;
+
+    return matchName && matchYear;
+  });
+
+  const years = [
+    ...new Set(torneios.map((t) => new Date(t.data).getFullYear())),
+  ].sort((a, b) => b - a);
 
   useEffect(() => {
     localStorage.setItem("torneios", JSON.stringify(torneios));
@@ -77,7 +92,22 @@ export default function Torneios() {
               <Search size={18} />
             </button>
           </div>
+          <div className="select-wrapper">
+            <select
+              className="year-filter"
+              value={year}
+              onChange={(e) => setYear(e.target.value)}
+            >
+              <option value="all">Todos os anos</option>
 
+              {years.map((y) => (
+                <option key={y} value={y}>
+                  {y}
+                </option>
+              ))}
+            </select>
+            <span className="select-icon">▼</span>
+          </div>
           <button
             className="btn-primary"
             onClick={() => {

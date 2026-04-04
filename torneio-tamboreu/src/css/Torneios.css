@@ -68,6 +68,45 @@
   color: #2563eb;
 }
 
+.year-filter {
+  appearance: none;
+
+  padding: 12px 35px 12px 18px;
+
+  border-radius: 999px;
+  border: 1px solid #ddd;
+
+  background: #f1f5f9;
+  color: #334155;
+
+  font-size: 14px;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.year-filter:focus {
+  border-color: #2563eb;
+  outline: none;
+}
+
+.select-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.select-icon {
+  position: absolute;
+  right: 12px;
+
+  pointer-events: none; /* não interfere no clique */
+
+  font-size: 12px;
+  color: #64748b;
+}
+
 .torneios-content {
   display: grid;
   grid-template-columns: 300px 1fr;
