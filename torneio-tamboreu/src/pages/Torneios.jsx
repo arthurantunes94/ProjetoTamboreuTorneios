@@ -3,6 +3,7 @@ import TorneioForm from "../components/torneios/TorneioForm";
 import TorneioList from "../components/torneios/TorneioList";
 import "../css/Torneios.css";
 import toast from "react-hot-toast";
+import Modal from "../components/Modal";
 
 export default function Torneios() {
   const [torneios, setTorneios] = useState(() => {
@@ -14,6 +15,7 @@ export default function Torneios() {
     }
   });
   const [editing, setEditing] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("torneios", JSON.stringify(torneios));
@@ -21,6 +23,7 @@ export default function Torneios() {
 
   function addTorneio(torneio) {
     setTorneios([...torneios, { ...torneio, id: Date.now() }]);
+    setIsModalOpen(false);
     toast.success("Torneio criado com sucesso!");
   }
 
@@ -32,36 +35,58 @@ export default function Torneios() {
 
   function startEdit(torneio) {
     setEditing(torneio);
+    setIsModalOpen(true);
   }
 
   function updateTorneio(updated) {
     setTorneios(torneios.map((t) => (t.id === updated.id ? updated : t)));
     setEditing(null);
+    setIsModalOpen(false);
 
     toast.success("Torneio atualizado!");
   }
 
   return (
     <div className="torneios-container">
-      <h1 className="title">Torneios</h1>
+      <div className="header">
+        <h1 className="title">Torneios</h1>
 
-      <div className="torneios-content">
-        <div className="form-area">
-          <TorneioForm
-            key={editing ? editing.id : "new"}
-            addTorneio={addTorneio}
-            editing={editing}
-            updateTorneio={updateTorneio}
-          />
-        </div>
+        <button
+          className="btn-primary"
+          onClick={() => {
+            setEditing(null);
+            setIsModalOpen(true);
+          }}
+        >
+          + Novo Torneio
+        </button>
+      </div>
 
-        <div className="list-area">
-          <TorneioList
-            torneios={torneios}
-            deleteTorneio={deleteTorneio}
-            startEdit={startEdit}
-          />
-        </div>
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => {
+          setIsModalOpen(false);
+          setEditing(null);
+        }}
+      >
+        <TorneioForm
+          key={editing ? editing.id : "new"}
+          addTorneio={addTorneio}
+          editing={editing}
+          updateTorneio={updateTorneio}
+          onClose={() => {
+            setIsModalOpen(false);
+            setEditing(null);
+          }}
+        />
+      </Modal>
+
+      <div className="list-area">
+        <TorneioList
+          torneios={torneios}
+          deleteTorneio={deleteTorneio}
+          startEdit={startEdit}
+        />
       </div>
     </div>
   );
