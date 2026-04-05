@@ -154,6 +154,23 @@
   outline: none;
 }
 
+.form-card select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+
+  background: white;
+  color: #334155;
+
+  transition: 0.2s;
+}
+
+.form-card select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  outline: none;
+}
+
 .form-fields {
   display: flex;
   flex-direction: column;
@@ -219,9 +236,39 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
 }
 
+.torneio-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .torneio-info {
   display: flex;
   flex-direction: column;
+}
+
+.torneio-data {
+  font-size: 13px;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+.status {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.status.ativo {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status.finalizado {
+  background: #fee2e2;
+  color: #991b1b;
 }
 
 .torneio-actions button {

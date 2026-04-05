@@ -22,9 +22,13 @@ export default function Torneios() {
   const currentYear = new Date().getFullYear().toString();
   const [year, setYear] = useState(currentYear);
 
-  const torneiosOrdenados = [...torneios].sort(
-    (a, b) => new Date(b.data) - new Date(a.data),
-  );
+  const torneiosOrdenados = [...torneios].sort((a, b) => {
+    if (a.status !== b.status) {
+      return a.status === "ativo" ? -1 : 1;
+    }
+
+    return new Date(b.data) - new Date(a.data);
+  });
 
   const torneiosFiltrados = torneiosOrdenados.filter((t) => {
     const matchName = t.nome.toLowerCase().includes(search.toLowerCase());
@@ -44,7 +48,10 @@ export default function Torneios() {
   }, [torneios]);
 
   function addTorneio(torneio) {
-    setTorneios([...torneios, { ...torneio, id: Date.now() }]);
+    setTorneios([
+      ...torneios,
+      { ...torneio, status: torneio.status || "ativo", id: Date.now() },
+    ]);
     setIsModalOpen(false);
     toast.success("Torneio criado com sucesso!");
   }

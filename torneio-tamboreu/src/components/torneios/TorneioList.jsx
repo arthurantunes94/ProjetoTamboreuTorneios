@@ -19,8 +19,13 @@ export default function TorneioList({ torneios, startDelete, startEdit }) {
       {torneios.map((t) => (
         <div className="torneio-card" key={t.id}>
           <div className="torneio-info">
-            <strong>{t.nome}</strong>
-            <span>{formatDate(t.data)}</span>
+            <div className="torneio-header">
+              <strong>{t.nome}</strong>
+
+              <span className={`status ${t.status}`}>{t.status}</span>
+            </div>
+
+            <span className="torneio-data">{formatDate(t.data)}</span>
           </div>
 
           <div className="torneio-actions">
